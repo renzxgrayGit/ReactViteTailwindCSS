@@ -50,7 +50,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 
-GO to Home.jsx CHANGE button Read to Link to={`/read/:${data.id}`}
+GO to Home.jsx CHANGE button Read to Link to={`/read/${data.id}`}
 
 GO to Read.jsx and add below: (You can copy some codes in Home.jsx and add id to pass paramater)
 const [data, setData] = useState([])
