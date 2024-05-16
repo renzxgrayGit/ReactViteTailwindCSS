@@ -100,7 +100,7 @@ axios.get('http://localhost:3000/users/'+ id)
 
 change value={values.name},email and phone properties in INPUT element
 
-GO to Home.jsx CHANGE button Edit to Link to={`/update/:${data.id}`}
+GO to Home.jsx CHANGE button Edit to Link to={`/update/${data.id}`}
 
 add onClick={e => handleDelete(data.id)} in button DELETE
 
