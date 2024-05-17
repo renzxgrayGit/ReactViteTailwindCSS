@@ -68,6 +68,8 @@ create div > h3 Detail of User > div > p Name: {data.name, data.email and phone}
 GO to Update.jsx and create Update user consists of Name, Email, Phone
 create div > h1 Update User > form > div > label htmlFor="name" > input name="name" (as well as for Email and Phone) > button Update > Link Back to Home.jsx (You can copy this in Create.jsx)
 
+TRY TO REMOVE onSubmit={handleSubmit} in FORM ELEMENT to check if its display the data.name, email, phone in Input element
+
 add below: (You can copy some codes in Read.jsx)
 const [data, setData] = useState([])
 const {id} = useParams();
@@ -79,9 +81,12 @@ axios.get('http://localhost:3000/users/'+ id)
 
 add value={data.name},email and phone properties in INPUT element
 
-TRY TO REMOVE onSubmit={handleSubmit} in FORM ELEMENT to check if its display the data.name, email, phone in Input element
-
 create useState to put Add User on variable, [values, setValues] = useState({name:'', email:'', phone:''}) (You can copy this in Create.jsx)
+
+UPDATE your .then inside useEffect, CHANGE setData INTO setValues
+.then(res => setValues(res.data)) <-------------
+
+CHANGE value={values.name},email and phone properties in INPUT element
 
 add onSubmit={handleUpdate} in FORM ELEMENT
 
@@ -90,15 +95,6 @@ event.preventDefault();
 axios.put('http://localhost:3000/users/' + id, values) , we use PUT bcz we're UPDATING user, ADD the id, and ADD the STATE values in link
 .then(res => {console.log(res) navigate('/')}) , CREATE navigate = useNavigate(); to use useNavigate you need to import to react-router-dom.
 .catch(err => console.log(err))
-
-UPDATE your .then inside useEffect
-useEffect(() => {
-axios.get('http://localhost:3000/users/'+ id)
-.then(res => setValues(res.data)) <-------------
-.catch(err => console.log(err))
-}, [])
-
-change value={values.name},email and phone properties in INPUT element
 
 GO to Home.jsx CHANGE button Edit to Link to={`/update/${data.id}`}
 
